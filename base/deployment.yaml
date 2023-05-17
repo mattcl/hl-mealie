@@ -65,7 +65,7 @@ spec:
               value: http://mealie-api:9000
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: 3001
               protocol: TCP
           volumeMounts:
             - name: mealie-data
