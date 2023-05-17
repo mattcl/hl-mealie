@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+        - name: mealie
+          image: "hkotel/mealie:v0.5.6"
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: "mealie-config"
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: mealie-data
+              mountPath: /app/data
+      volumes:
+        - name: mealie-data
+          persistentVolumeClaim:
+            claimName: mealie-data-pvc
+

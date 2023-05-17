@@ -1,0 +1,19 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mealie
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`mealie.hl.ancalagon.black`)
+      priority: 10
+      services:
+        - name: mealie
+          port: 80
+  tls:
+    certResolver: default
