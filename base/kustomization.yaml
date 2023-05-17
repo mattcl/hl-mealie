@@ -4,9 +4,6 @@ kind: Kustomization
 
 namespace: mealie
 
-commonLabels:
-  app.kubernetes.io/name: mealie
-
 resources:
   - pvc.yaml
   - deployment.yaml
