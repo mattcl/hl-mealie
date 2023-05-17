@@ -15,7 +15,5 @@ spec:
       services:
         - name: mealie-frontend
           port: 80
-        - name: mealie-api
-          port: 9000
   tls:
     certResolver: default
